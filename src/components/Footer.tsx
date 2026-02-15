@@ -103,9 +103,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-enervit-red rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">E</span>
-            </div>
+            <img src="/images/logos/enervit-white.svg" alt="Enervit" style={{ height: 28, width: 'auto' }} />
             <div>
               <p className="text-sm text-white/60">
                 &copy; {new Date().getFullYear()} VITAR Sport, s.r.o. &mdash; Oficiální distributor Enervit pro CZ/SK

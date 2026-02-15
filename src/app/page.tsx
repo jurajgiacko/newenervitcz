@@ -16,13 +16,14 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative bg-enervit-black overflow-hidden">
-        <div className="hero-overlay absolute inset-0 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-br from-enervit-black via-enervit-gray-900 to-enervit-red/20" />
-        {/* Abstract pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-enervit-red rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl" />
-        </div>
+        {/* Real hero background image */}
+        <img
+          src="/images/hero/sport-d.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-enervit-black via-enervit-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-enervit-black/60 via-transparent to-enervit-black/30" />
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">

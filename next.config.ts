@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.enervit.com' },
+      { protocol: 'https', hostname: 'media.enervit.com' },
+      { protocol: 'https', hostname: '*.enervit.com' },
+    ],
+    unoptimized: true,
+  },
   // SEO: 301 redirects from old enervit.cz URLs to new structure
   // Ensures zero 404 errors after migration
   async redirects() {

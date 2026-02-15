@@ -26,14 +26,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-10 h-10 bg-enervit-red rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">E</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-enervit-black tracking-tight">ENERVIT</span>
-              <span className="text-[10px] text-enervit-gray-500 -mt-1 tracking-widest uppercase">Sport Nutrition</span>
-            </div>
+          <Link href="/" className="shrink-0">
+            <img src="/images/logos/enervit-color.svg" alt="Enervit" style={{ height: 36, width: 'auto' }} />
           </Link>
 
           {/* Desktop Nav */}
