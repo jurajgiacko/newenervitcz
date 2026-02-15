@@ -1,0 +1,301 @@
+export type ProductCategory = "before" | "during" | "after" | "supplements";
+
+export interface Product {
+  slug: string;
+  name: string;
+  category: ProductCategory;
+  categoryLabel: string;
+  tagline: string;
+  description: string;
+  usage: string;
+  price: number;
+  image: string;
+  badge?: string;
+  isNew?: boolean;
+  nutrition: {
+    carbs?: string;
+    protein?: string;
+    sodium?: string;
+    caffeine?: string;
+    calories?: string;
+  };
+  relatedSlugs: string[];
+}
+
+export const categoryInfo: Record<ProductCategory, { title: string; subtitle: string; description: string; icon: string; color: string }> = {
+  before: {
+    title: "Před sportem",
+    subtitle: "Připravte tělo na výkon",
+    description: "Správná příprava je základ úspěchu. Doplňte zásoby energie a připravte svaly na nadcházející zátěž. Naše produkty Before zajistí optimální hladinu glykogenu a hydrataci.",
+    icon: "🟢",
+    color: "emerald",
+  },
+  during: {
+    title: "Během sportu",
+    subtitle: "Doplňte energii na trati",
+    description: "V průběhu výkonu potřebuje tělo rychle dostupnou energii. Gely, tyčinky a izotonické nápoje C2:1PRO zajistí plynulý přísun sacharidů v poměru 2:1 (maltodextrin:fruktóza).",
+    icon: "🔴",
+    color: "red",
+  },
+  after: {
+    title: "Po sportu",
+    subtitle: "Regenerujte a posilte svaly",
+    description: "Regenerace začíná ihned po skončení výkonu. V prvních 30 minutách je okno příležitosti pro maximální vstřebání živin. Proteiny, aminokyseliny a sacharidy pro kompletní obnovu.",
+    icon: "🔵",
+    color: "blue",
+  },
+  supplements: {
+    title: "Doplňky",
+    subtitle: "Vitamíny a suplementy",
+    description: "Denní podpora pro aktivní sportovce. Vitamíny, minerály a speciální doplňky pro dlouhodobé zdraví a výkonnost.",
+    icon: "🟡",
+    color: "amber",
+  },
+};
+
+export const products: Product[] = [
+  // BEFORE
+  {
+    slug: "pre-sport-energy-bar",
+    name: "Pre Sport Energy Bar",
+    category: "before",
+    categoryLabel: "Před sportem",
+    tagline: "Optimální energie před výkonem",
+    description: "Energetická tyčinka s vyváženým poměrem sacharidů a bílkovin pro konzumaci 1-2 hodiny před sportem. Pomáhá naplnit zásoby glykogenu a dodává tělu stabilní energii.",
+    usage: "Snězte 1-2 hodiny před tréninkem nebo závodem. Zapijte dostatečným množstvím vody.",
+    price: 49,
+    image: "/images/products/pre-sport-bar.jpg",
+    badge: "BEFORE",
+    nutrition: { carbs: "35g", protein: "8g", calories: "200 kcal" },
+    relatedSlugs: ["carbo-gel-orange", "isotonic-drink"],
+  },
+  {
+    slug: "pre-sport-jelly",
+    name: "Pre Sport Jelly",
+    category: "before",
+    categoryLabel: "Před sportem",
+    tagline: "Koncentrovaná energie v želé formě",
+    description: "Jedinečná želé formule s vysokým obsahem sacharidů pro rychlé doplnění glykogenových zásob. Ideální před závodem nebo náročným tréninkem.",
+    usage: "Konzumujte 30-60 minut před výkonem.",
+    price: 59,
+    image: "/images/products/pre-sport-jelly.jpg",
+    badge: "BEFORE",
+    nutrition: { carbs: "45g", sodium: "80mg", calories: "180 kcal" },
+    relatedSlugs: ["carbo-gel-orange", "competition-bar"],
+  },
+  {
+    slug: "carboloader",
+    name: "Carbo Loader",
+    category: "before",
+    categoryLabel: "Před sportem",
+    tagline: "Maximální naplnění glykogenových zásob",
+    description: "Nápoj pro carbo-loading v posledních dnech před závodem. Pomáhá maximalizovat zásoby svalového glykogenu pro vytrvalostní výkony delší než 90 minut.",
+    usage: "Pijte 2-3 dny před závodem, 1-2 porce denně navíc k běžné stravě.",
+    price: 79,
+    image: "/images/products/carboloader.jpg",
+    badge: "BEFORE",
+    nutrition: { carbs: "60g", sodium: "120mg", calories: "240 kcal" },
+    relatedSlugs: ["isotonic-drink", "carbo-gel-lemon-sodium"],
+  },
+  // DURING
+  {
+    slug: "carbo-gel-orange",
+    name: "C2:1PRO Carbo Gel Orange",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Rychlá energie v poměru 2:1",
+    description: "Energetický gel s technologií C2:1PRO – maltodextrin a fruktóza v poměru 2:1 pro optimální vstřebávání až 90g sacharidů za hodinu. Osvěžující pomerančová příchuť. Vítěz Runner's World Gear of the Year 2026.",
+    usage: "Konzumujte 1 gel každých 30-45 minut během výkonu. Zapijte vodou.",
+    price: 55,
+    image: "/images/products/carbo-gel-orange.jpg",
+    badge: "DURING",
+    nutrition: { carbs: "30g", sodium: "50mg", calories: "120 kcal" },
+    relatedSlugs: ["carbo-gel-lemon-sodium", "isotonic-drink", "recovery-drink"],
+  },
+  {
+    slug: "carbo-gel-lemon-sodium",
+    name: "C2:1PRO Carbo Gel Lemon Sodium",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Energie + sodík proti křečím",
+    description: "Energetický gel s přidaným sodíkem (200mg) pro prevenci křečí při intenzivním pocení. Citronová příchuť. Nejprodávanější gel Enervit v roce 2025.",
+    usage: "1 gel každých 30-45 minut, ideální pro závody nad 2 hodiny a v horkém počasí.",
+    price: 59,
+    image: "/images/products/carbo-gel-lemon-sodium.jpg",
+    badge: "DURING",
+    nutrition: { carbs: "30g", sodium: "200mg", calories: "120 kcal" },
+    relatedSlugs: ["carbo-gel-orange", "carbogel-neutral", "isotonic-drink"],
+  },
+  {
+    slug: "carbogel-neutral",
+    name: "C2:1PRO Carbogel Neutral",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Sodík bez příchutě – čistá energie",
+    description: "Nový gel bez příchutě se sodíkem. Ideální pro sportovce, kteří při vysokém příjmu sacharidů (60-90g/h) preferují neutrální chuť. Konzistence blízká vodě, přesto gelová formule.",
+    usage: "1 gel každých 30-45 minut. Vhodný pro kombinaci s příchutovými gely.",
+    price: 59,
+    image: "/images/products/carbogel-neutral.jpg",
+    badge: "DURING",
+    isNew: true,
+    nutrition: { carbs: "40g", sodium: "200mg", calories: "160 kcal" },
+    relatedSlugs: ["carbo-gel-lemon-sodium", "competition-bar", "isotonic-drink"],
+  },
+  {
+    slug: "isotonic-drink",
+    name: "Isotonic Drink",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Hydratace a energie v jednom",
+    description: "Izotonický nápoj s minerály a sacharidy pro průběžnou hydrataci a energii během sportu. Osmolalita blízká krevní plazmě pro maximální vstřebávání.",
+    usage: "Rozpusťte 1 sáček v 500ml vody. Pijte průběžně každých 15-20 minut.",
+    price: 39,
+    image: "/images/products/isotonic-drink.jpg",
+    badge: "DURING",
+    nutrition: { carbs: "30g", sodium: "300mg", calories: "120 kcal" },
+    relatedSlugs: ["carbo-gel-orange", "competition-bar", "electrolyte-rtd"],
+  },
+  {
+    slug: "competition-bar",
+    name: "C2:1PRO Carbo Bar",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Tuhá energie pro dlouhé výkony",
+    description: "Energetická tyčinka s poměrem sacharidů 2:1 pro dlouhé vytrvalostní výkony. Snadno stravitelná, ideální pro cyklistiku a dlouhé běhy.",
+    usage: "Konzumujte po částech během výkonu, kombinujte s gely a izotoniky.",
+    price: 49,
+    image: "/images/products/competition-bar.jpg",
+    badge: "DURING",
+    nutrition: { carbs: "40g", protein: "5g", calories: "190 kcal" },
+    relatedSlugs: ["carbo-gel-orange", "isotonic-drink", "salty-caramel-bar"],
+  },
+  {
+    slug: "salty-caramel-bar",
+    name: "C2:1PRO Carbo Bar Salty Caramel",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Slaný karamel – když chcete víc než sladké",
+    description: "Nová příchuť slaný karamel v řadě C2:1PRO tyčinek. Se sodíkem (200mg) pro náročné podmínky. Bez lepku. Slaná a sladká chuť v jednom – trend, který závodníci milují.",
+    usage: "Konzumujte po částech během dlouhých výkonů.",
+    price: 55,
+    image: "/images/products/salty-caramel-bar.jpg",
+    badge: "DURING",
+    isNew: true,
+    nutrition: { carbs: "35g", sodium: "200mg", protein: "5g", calories: "185 kcal" },
+    relatedSlugs: ["competition-bar", "carbo-gel-lemon-sodium", "isotonic-drink"],
+  },
+  {
+    slug: "electrolyte-rtd",
+    name: "Electrolyte RTD",
+    category: "during",
+    categoryLabel: "Během sportu",
+    tagline: "Ready to Drink hydratace v plechovce",
+    description: "Revoluční elektrolytový nápoj v plechovce. Bez kofeinu, bez cukru, s přírodní příchutí. Sodík 200mg, hořčík 150mg, draslík 40mg. Jemně perlivý – karbonatace pomáhá otevřít žaludek. Trend z USA, nově v Evropě.",
+    usage: "Pijte před, během i po sportu. Ideální i na cesty a do fitness.",
+    price: 65,
+    image: "/images/products/electrolyte-rtd.jpg",
+    badge: "DURING",
+    isNew: true,
+    nutrition: { sodium: "200mg", calories: "5 kcal" },
+    relatedSlugs: ["isotonic-drink", "carbo-gel-orange", "recovery-drink"],
+  },
+  // AFTER
+  {
+    slug: "recovery-drink",
+    name: "R1 Sport Recovery Drink",
+    category: "after",
+    categoryLabel: "Po sportu",
+    tagline: "Kompletní regenerace v jednom nápoji",
+    description: "Regenerační nápoj s proteiny, sacharidy a aminokyselinami pro maximální obnovu po výkonu. Konzumujte v prvních 30 minutách po sportu – v anabolickém okně.",
+    usage: "Rozpusťte v 300ml vody ihned po skončení výkonu.",
+    price: 69,
+    image: "/images/products/recovery-drink.jpg",
+    badge: "AFTER",
+    nutrition: { carbs: "20g", protein: "20g", calories: "160 kcal" },
+    relatedSlugs: ["recovery-bar", "carbo-gel-orange", "isotonic-drink"],
+  },
+  {
+    slug: "recovery-bar",
+    name: "Protein Bar Recovery",
+    category: "after",
+    categoryLabel: "Po sportu",
+    tagline: "Proteinová tyčinka pro svaly",
+    description: "Proteinová tyčinka s 20g bílkovin a BCAA pro obnovu svalových vláken po tréninku. Čokoládová příchuť. Bez lepku.",
+    usage: "Snězte do 60 minut po tréninku jako doplněk k Recovery Drinku.",
+    price: 59,
+    image: "/images/products/recovery-bar.jpg",
+    badge: "AFTER",
+    nutrition: { carbs: "15g", protein: "20g", calories: "180 kcal" },
+    relatedSlugs: ["recovery-drink", "creatine"],
+  },
+  // SUPPLEMENTS
+  {
+    slug: "magic-cherry",
+    name: "Magic Cherry",
+    category: "supplements",
+    categoryLabel: "Doplňky",
+    tagline: "Přírodní síla třešní pro regeneraci",
+    description: "Koncentrát z višní Montmorency bohatý na antioxidanty a přirozené melatonin. Pomáhá redukovat zánět a zlepšuje kvalitu spánku. Bestseller v CZ/SK – první palety rozprodány za dny.",
+    usage: "1 tableta denně před spaním nebo po náročném tréninku.",
+    price: 449,
+    image: "/images/products/magic-cherry.jpg",
+    badge: "RECOVERY",
+    nutrition: { calories: "5 kcal" },
+    relatedSlugs: ["recovery-drink", "creatine"],
+  },
+  {
+    slug: "creatine",
+    name: "Creatine Sport",
+    category: "supplements",
+    categoryLabel: "Doplňky",
+    tagline: "Čistý kreatin pro sílu a výkon",
+    description: "Mikronizovaný kreatin monohydrát pro zvýšení svalové síly a výkonu při krátkodobém intenzivním zatížení. Vědecky nejlépe podložený doplněk pro sportovce.",
+    usage: "5g denně (1 odměrka) rozpuštěných ve vodě nebo šťávě.",
+    price: 399,
+    image: "/images/products/creatine.jpg",
+    nutrition: { protein: "5g kreatin", calories: "0 kcal" },
+    relatedSlugs: ["recovery-drink", "recovery-bar"],
+  },
+  {
+    slug: "hot-bar-chocolate",
+    name: "Hot Bar Chocolate",
+    category: "supplements",
+    categoryLabel: "Doplňky",
+    tagline: "Sport lifestyle tyčinka",
+    description: "Nová řada tyčinek mezi proteinovou a technickou – pro outdoor, gravel, trail, hiking i běžný den. Čokoládová příchuť inspirovaná americkými Clif Bars. Bez lepku.",
+    usage: "Kdykoli během dne, při outdoorových aktivitách nebo jako snack.",
+    price: 29,
+    image: "/images/products/hot-bar-chocolate.jpg",
+    isNew: true,
+    nutrition: { carbs: "25g", protein: "8g", calories: "160 kcal" },
+    relatedSlugs: ["hot-bar-cranberry", "competition-bar"],
+  },
+  {
+    slug: "hot-bar-cranberry",
+    name: "Hot Bar Cranberry",
+    category: "supplements",
+    categoryLabel: "Doplňky",
+    tagline: "Brusinka pro každodenní energii",
+    description: "Brusniková varianta nové řady Hot Bar. Příjemná chuť pro sportovce i nesportovce. Ideální pro lyžování, turistiku a každodenní svačinu. Bez lepku.",
+    usage: "Kdykoli během dne, ideální pro outdoorové aktivity.",
+    price: 29,
+    image: "/images/products/hot-bar-cranberry.jpg",
+    isNew: true,
+    nutrition: { carbs: "25g", protein: "7g", calories: "155 kcal" },
+    relatedSlugs: ["hot-bar-chocolate", "pre-sport-energy-bar"],
+  },
+];
+
+export function getProductsByCategory(category: ProductCategory): Product[] {
+  return products.filter((p) => p.category === category);
+}
+
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
+
+export function getRelatedProducts(product: Product): Product[] {
+  return product.relatedSlugs
+    .map((s) => products.find((p) => p.slug === s))
+    .filter(Boolean) as Product[];
+}

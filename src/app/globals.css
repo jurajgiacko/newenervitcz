@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
+  --enervit-red: #dc2626;
+  --enervit-red-dark: #b91c1c;
+  --enervit-red-light: #fef2f2;
+  --enervit-black: #111111;
+  --enervit-gray-900: #1a1a1a;
+  --enervit-gray-700: #374151;
+  --enervit-gray-500: #6b7280;
+  --enervit-gray-300: #d1d5db;
+  --enervit-gray-100: #f3f4f6;
+  --enervit-white: #ffffff;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-enervit-red: var(--enervit-red);
+  --color-enervit-red-dark: var(--enervit-red-dark);
+  --color-enervit-red-light: var(--enervit-red-light);
+  --color-enervit-black: var(--enervit-black);
+  --color-enervit-gray-900: var(--enervit-gray-900);
+  --color-enervit-gray-700: var(--enervit-gray-700);
+  --color-enervit-gray-500: var(--enervit-gray-500);
+  --color-enervit-gray-300: var(--enervit-gray-300);
+  --color-enervit-gray-100: var(--enervit-gray-100);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mega menu animation */
+.mega-menu-enter {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.mega-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Product card hover */
+.product-card:hover .product-image {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.product-image {
+  transition: transform 0.3s ease;
+}
+
+/* Hero gradient overlay */
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+}
+
+/* Red gradient accent */
+.red-gradient {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--enervit-gray-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--enervit-gray-300);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--enervit-gray-500);
 }
