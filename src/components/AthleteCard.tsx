@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import type { Athlete } from "@/data/athletes";
 
 const sportGradients: Record<string, string> = {
@@ -39,7 +41,8 @@ export default function AthleteCard({ athlete, size = "md" }: { athlete: Athlete
   const gradient = sportGradients[athlete.sport] || "from-gray-800/50 to-gray-900";
   const emoji = sportEmojis[athlete.sport] || "🏅";
 
-  const hasImage = athlete.image && !athlete.image.includes("placeholder");
+  const [imgError, setImgError] = useState(false);
+  const hasImage = athlete.image && !athlete.image.includes("placeholder") && !imgError;
 
   return (
     <Link href={`/sportovci/${athlete.slug}`} className="group block relative rounded-2xl overflow-hidden">
@@ -49,6 +52,7 @@ export default function AthleteCard({ athlete, size = "md" }: { athlete: Athlete
             src={athlete.image}
             alt={athlete.name}
             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`}>

@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import type { Product } from "@/data/products";
 
 const badgeColors: Record<string, string> = {
@@ -15,7 +17,8 @@ const categoryGradients: Record<string, string> = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
-  const hasImage = product.image && !product.image.includes("placeholder");
+  const [imgError, setImgError] = useState(false);
+  const hasImage = product.image && !product.image.includes("placeholder") && !imgError;
   const gradient = categoryGradients[product.badge || ""] || "from-gray-50 via-white to-gray-50/30";
 
   return (
@@ -27,6 +30,7 @@ export default function ProductCard({ product }: { product: Product }) {
             src={product.image}
             alt={product.name}
             className="product-image w-full h-full object-contain p-4 bg-white group-hover:scale-105 transition-transform duration-300"
+            onError={() => setImgError(true)}
           />
         ) : (
           <div className={`product-image w-full h-full flex items-center justify-center p-6 bg-gradient-to-br ${gradient}`}>
